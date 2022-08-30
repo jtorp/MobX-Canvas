@@ -14,15 +14,11 @@ const Canvas = observer(() => {
   const canvasRef = useRef();
   const params = useParams()
   const [modal, setModal] = useState(true)
-
-
   //animations
   const title = useRef();
   const readyBtn = useRef();
-const m = useRef()
 
   useEffect(() => {
- 
     canvasState.setCanvas(canvasRef.current)
     canvasState.setSessionId(params.id)
     toolState.setTool(new Brush(canvasRef.current, params.id))
@@ -58,8 +54,6 @@ gsap.to([title.current, usernameRef.current, readyBtn.current], {
   
     <React.Fragment>
       <Modal
-      s
-      ref={m}
         className="modal"
         show={modal} onHide={() => { setModal(false) }}
         backdrop="static"
@@ -70,15 +64,10 @@ gsap.to([title.current, usernameRef.current, readyBtn.current], {
            ref={title}> Canvas</h1>
           </Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
-          
           <Form  className='p-2'>
-            
             <Form.Group
              className="mb-5 mt-5" >
-                  
-
               <Form.Control
                 ref={usernameRef}
                 type="name"
@@ -89,16 +78,13 @@ gsap.to([title.current, usernameRef.current, readyBtn.current], {
           </Form>
         </Modal.Body>
         <Modal.Footer className="modal-footer">
-          
           <Button 
            ref={readyBtn}
           variant="light"
           onClick={() =>
               connectHandler()}
               className="ready-btn">Continue </Button>
-                <Lottie 
-               
-                className="lottie" animationData={canvasAnimation} loop={true} />
+                <Lottie className="lottie" animationData={canvasAnimation} loop={true} />
         </Modal.Footer>
       </Modal>
       <div className='canvas' >
