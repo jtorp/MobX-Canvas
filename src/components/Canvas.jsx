@@ -8,9 +8,9 @@ import { Modal, Button, Form } from "react-bootstrap";
 import Lottie from "lottie-react";
 import canvasAnimation from "../assets/lotties/mylottie.json"
 import { gsap } from "gsap";
+
 const Canvas = observer(() => {
   const usernameRef = useRef()
-
   const canvasRef = useRef();
   const params = useParams()
   const [modal, setModal] = useState(true)
@@ -22,36 +22,34 @@ const Canvas = observer(() => {
     canvasState.setCanvas(canvasRef.current)
     canvasState.setSessionId(params.id)
     toolState.setTool(new Brush(canvasRef.current, params.id))
-
   }, [params.id])
 
 
-useEffect(()=>{
-gsap.to([title.current, usernameRef.current, readyBtn.current], { 
-  opacity:1,
-   scale:1,
-   duration:1,
-   stagger:.2,
-   ease: "back.out" })
-         
-
-}, [])
+  useEffect(() => {
+    gsap.to([title.current, usernameRef.current, readyBtn.current], {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      stagger: .2,
+      ease: "back.out"
+    })
+  }, [])
 
   const connectHandler = () => {
     canvasState.setUsername(usernameRef.current.value)
     setModal(false)
-    gsap.to(canvasRef.current,{
-      duration:2,
+    gsap.to(canvasRef.current, {
+      duration: 2,
       opacity: 1,
       ease: "slow",
-    },"+=1.5")
-     }
+    }, "+=1.5")
+  }
 
   const mouseDownHandler = () => {
     canvasState.pushToUndo(canvasRef.current.toDataURL())
   }
   return (
-  
+
     <React.Fragment>
       <Modal
         className="modal"
@@ -61,13 +59,13 @@ gsap.to([title.current, usernameRef.current, readyBtn.current], {
       >
         <Modal.Header closeButton>
           <Modal.Title><h1
-           ref={title}> Canvas</h1>
+            ref={title}> Canvas</h1>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form  className='p-2'>
+          <Form className='p-2'>
             <Form.Group
-             className="mb-5 mt-5" >
+              className="mb-5 mt-5" >
               <Form.Control
                 ref={usernameRef}
                 type="name"
@@ -78,13 +76,13 @@ gsap.to([title.current, usernameRef.current, readyBtn.current], {
           </Form>
         </Modal.Body>
         <Modal.Footer className="modal-footer">
-          <Button 
-           ref={readyBtn}
-          variant="light"
-          onClick={() =>
+          <Button
+            ref={readyBtn}
+            variant="light"
+            onClick={() =>
               connectHandler()}
-              className="ready-btn">Continue </Button>
-                <Lottie className="lottie" animationData={canvasAnimation} loop={true} />
+            className="ready-btn">Continue </Button>
+          <Lottie className="lottie" animationData={canvasAnimation} loop={true} />
         </Modal.Footer>
       </Modal>
       <div className='canvas' >
@@ -92,7 +90,7 @@ gsap.to([title.current, usernameRef.current, readyBtn.current], {
           width={1280}
           height={720}
           onMouseDown={() => mouseDownHandler()}>
-          </canvas>
+        </canvas>
       </div>
     </React.Fragment>
   )
