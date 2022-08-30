@@ -125,12 +125,14 @@ nav.tool-navbar {
 .single-tool {
     margin: 5px 3px;
     padding: 8px 8px;
-    transition: all 0.3s ease-out;
+    transition: all 1s ease-out;
 }
 
-.single-tool :hover {
-    transform: scale(1.05);
-}
+ .action:hover {
+    color: #FF6F0F;
+    transition: all 1s;
+    filter: grayscale(100%) brightness(70%) sepia(100%) hue-rotate(-16deg) saturate(600%) contrast(0.9);
+} 
 
 .undo-redo-save {
     display: flex;
@@ -155,7 +157,7 @@ nav.tool-navbar {
     margin: 0 10px;
     font-weight: 700;
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: all 1s ease-in-out;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -164,7 +166,10 @@ nav.tool-navbar {
     align-self: center;
     border: none;
 }
+.toolbar-btn:hover{
+    background-color:#FF6F0F
 
+}
 .current-tool-active {
     border: 1px solid var(--current-tool);
 }
@@ -202,7 +207,7 @@ nav.tool-navbar {
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 11px;
-    color: var(--tooltip-text-color);
+    color: var(--tooltip-text-color);   
     text-transform: capitalize;
     background: var(--tooltip-background-color);
     font-size: 14px;
@@ -336,11 +341,14 @@ input[type='range']::-moz-color-swatch {
 
 .canvas canvas{
     background: #ffff;
-    border:1px solid var(--tooltip-background-color)
+    border:1px solid var(--tooltip-background-color);
+    opacity:0
 }
 .modal {
     z-index: 10000;
     padding-top: 10%;
+   
+   
 }
 
 .modal-dialog {
@@ -348,31 +356,38 @@ input[type='range']::-moz-color-swatch {
 }
 
 .modal-dialog input {
+    width:100%;
     border: none;
-    height: 48px;
-    border-bottom: 1px solid #0006;
+    height: 58px;
+    border:none;
     border-radius: 0;
-    color: var(--input-background);
+    color: rgba(0, 0, 0, 0.9);
     background-color: #f8f9fa;
-
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    opacity: 0;
 }
 
-.modal-dialog::before {
-    content: url('../assets/logoCanvas.png');
-    z-index:800;
-    position: relative;
-    right: -195px;
-    top:164px;
+.form-control:focus {
+    border:none;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    background-color: #f8f9fa;
+    transition: all 1s ;
 }
+
+
 .modal-header{
     border-bottom: none;
     z-index: 100000;
+    padding-bottom: 32px;
+
 }
 .modal-header h1{
-    padding-left: 43px;
+    margin-top:30px;
+    padding-left: 105px;
     font-size: 64px;
     font-family: 'Rock Salt', cursive;
-    color: var(--background-canvas);
+    color: #FF6F0F;
+    opacity: 0;
 }
 .modal-content {
     position: relative;
@@ -389,29 +404,37 @@ input[type='range']::-moz-color-swatch {
     align-content: stretch;
 }
 
+.lottie{
+    position: relative;
+    margin-top: -415px;
+    margin-right: -50px;
+    height:350px;
+    width:350px;
+
+}
 .modal-footer {
     background-color: var(--background-canvas);
     height: 160px;
 }
 
 .ready-btn {
+    position: absolute;
     background: transparent;
     text-align: center;
     width: max-content;
     padding: 12px 36px;
     color:var(--text-color);
     border-radius: 90px;
-    margin: 5% auto;
     font-weight: 400;
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: all 1s ease-in-out;
     flex-shrink: 0;
     display: flex;
-    align-items: center;
     text-transform: uppercase;
     text-decoration: none;
-    align-self: center;
-    border:1px solid var(--text-color)
+    border:1px solid var(--text-color);
+    margin-right: 155px;
+    opacity: 0;
 }
 
 select {
@@ -476,7 +499,6 @@ select {
         margin: 0 3px;
         padding: 8px 5px;
     }
-
     .canvas {
         height: 100vh;
     }

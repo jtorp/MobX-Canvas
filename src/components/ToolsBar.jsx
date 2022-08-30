@@ -103,15 +103,15 @@ const ToolsBar = () => {
                 </Tooltip>
             </div>
             <div className='undo-redo-save'>
-                <div className='single-tool' role="button"
+                <div className='single-tool action' role="button"
                     onClick={() => canvasState.undo()}>
                            <img alt='undo' src={undo}/>                  
                 </div>
-                <div className='single-tool' role="button"
+                <div className='single-tool action' role="button"
                     onClick={() => canvasState.redo()}>
                     <img alt='redo' src={redo}/>
                 </div>
-                <div className='single-tool' role="button"
+                <div className='single-tool action' role="button"
                     onClick={() => clearCanvas()}>
                      <img alt='delete' src={bin}/>
                 </div>
